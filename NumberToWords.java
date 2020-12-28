@@ -27,6 +27,9 @@ public class NumberToWords {
     if(number<0){
         printer(-1);
     }
+    if(number == 0){
+       printer(0);
+    }
     int reversedNumber = reverse(number);
     int digitOfReversed = getDigitCount(reversedNumber);
     int digitOfNumber = getDigitCount(number);
