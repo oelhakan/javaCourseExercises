@@ -1,52 +1,83 @@
 public class NumberToWords {
+    public static void printer(int number){
+        if(number==0){
+            System.out.println("ZERO");
+        }else if (number==1){
+            System.out.println("ONE");
+        }else if (number==2){
+            System.out.println("TWO");
+        }else if (number==3){
+            System.out.println("THREE");
+        }else if (number==4){
+            System.out.println("FOUR");
+        }else if (number==5){
+            System.out.println("FIVE");
+        }else if (number==6){
+            System.out.println("SIX");
+        }else if (number==7){
+            System.out.println("SEVEN");
+        }else if (number==8){
+            System.out.println("EIGHT");
+        }else if (number==9){
+            System.out.println("NINE");
+        }else System.out.println("INVALID VALUE");
+    }
 
-    public static String INVALID_VALUE = "INVALID VALUE";
-    public static String ZERO = "ZERO";
-    public static String ONE = "ONE";
-    public static String TWO = "TWO";
-    public static String THREE = "THREE";
-    public static String FOUR = "FOUR";
-    public static String FIVE = "FIVE";
-    public static String SIX = "SIX";
-    public static String SEVEN = "SEVEN";
-    public static String EIGHT = "EIGHT";
-    public static String NINE = "NINE";
-            //NUMBER = 1   ORIGINALNUMBER = 100
-    public static void numberToWords(int number) {
-        if (number < 0) {
-            System.out.println(INVALID_VALUE);
-        }
+    public static void numberToWords(int number){
+    if(number<0){
+        printer(-1);
+    }
+    int reversedNumber = reverse(number);
+    int digitOfReversed = getDigitCount(reversedNumber);
+    int digitOfNumber = getDigitCount(number);
+    if(digitOfNumber == digitOfReversed){
         int lastDigit = 0;
-        int firstDigit = 0;
-        while (number != 0) {
-            lastDigit = number % 10;
-                if (lastDigit == 0) {
-                    System.out.println(ZERO);
-                } else if (lastDigit == 1) {
-                    System.out.println(ONE);
-                } else if (lastDigit == 2) {
-                    System.out.println(TWO);
-                } else if (lastDigit == 3) {
-                    System.out.println(THREE);
-                } else if (lastDigit == 4) {
-                    System.out.println(FOUR);
-                } else if (lastDigit == 5) {
-                    System.out.println(FIVE);
-                } else if (lastDigit == 6) {
-                    System.out.println(SIX);
-                } else if (lastDigit == 7) {
-                    System.out.println(SEVEN);
-                } else if (lastDigit == 8) {
-                    System.out.println(EIGHT);
-                } else if (lastDigit == 9) {
-                    System.out.println(NINE);
-                }
-                number /= 10;
-                if (number == 0) {
-                    break;
-                }
+        while (reversedNumber != 0) {
+            lastDigit = reversedNumber % 10;
+            if (lastDigit == 0) {
+                printer(0);
+            } else if (lastDigit == 1) {
+                printer(1);
+            } else if (lastDigit == 2) {
+                printer(2);
+            } else if (lastDigit == 3) {
+                printer(3);
+            } else if (lastDigit == 4) {
+                printer(4);
+            } else if (lastDigit == 5) {
+                printer(5);
+            } else if (lastDigit == 6) {
+                printer(6);
+            } else if (lastDigit == 7) {
+                printer(7);
+            } else if (lastDigit == 8) {
+                printer(8);
+            } else if (lastDigit == 9) {
+                printer(9);
+            }
+            reversedNumber /= 10;
+            if (reversedNumber == 0) {
+                break;
             }
         }
+    }else{
+        int difference = digitOfNumber - digitOfReversed;
+        int lastDigit = 0;
+        int numberToPrint = 0;
+        while(reversedNumber>0) {
+            lastDigit = reversedNumber % 10;
+            printer(lastDigit);
+            reversedNumber /= 10;
+        while(reversedNumber==0){
+            for(int i=0; i<difference; i++){
+                printer(0);
+            }break;
+        }
+    }
+}
+
+}
+
 
     public static int reverse(int numberToReverse) {
         int reversedNumber = 0;
@@ -81,17 +112,19 @@ public class NumberToWords {
     }
 
     public static void main(String[] args) {
-//        System.out.println(getDigitCount(0));
-//        System.out.println(getDigitCount(-5));
-//        System.out.println(getDigitCount(147589));
-//        System.out.println(getDigitCount(001));
-//        System.out.println(getDigitCount(100));
-//
-//        System.out.println(reverse(1234));
-//        System.out.println(reverse(-1234));
-//        System.out.println(reverse(0));
-//
-//        numberToWords(reverse(1506));
-        numberToWords(reverse(1546));
+        System.out.println(getDigitCount(0));
+        System.out.println(getDigitCount(-5));
+        System.out.println(getDigitCount(147589));
+        System.out.println(getDigitCount(001));
+        System.out.println(getDigitCount(100));
+
+        System.out.println(reverse(1234));
+        System.out.println(reverse(-1234));
+        System.out.println(reverse(0));
+
+        numberToWords(reverse(1506));
+        numberToWords(235);
+        numberToWords(100);
+        numberToWords(150);
     }
 }
