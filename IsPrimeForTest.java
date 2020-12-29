@@ -1,9 +1,21 @@
 public class IsPrimeForTest {
+    public static void determineNumberOfPrimeInRange(int howManyPrime, int rangeStart, int rangeEnd){
+        int primeNumberFound = 0;
+            for (int i = rangeStart; i < rangeEnd; i++) {
+                if (isPrime(i)) {
+                    System.out.println(i + " IS A PRIME NUMBER!");
+                    primeNumberFound++;
+                }
+                if(primeNumberFound == howManyPrime){
+                    break;
+                }
+            }
+    }
     public static boolean isPrime(int n) {
-        if (n == 1) {
+        if (n < 2) {
             return false;
         }
-        for (int i = 2; i < n / 2; i++) {
+        for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
                 return false;
             }
@@ -12,18 +24,6 @@ public class IsPrimeForTest {
     }
 
     public static void main(String[] args) {
-        int primeNumberFound = 0;
-        if (primeNumberFound < 3) {
-            for (int i = 20; i < 35; i++) {
-                if (isPrime(i)) {
-                    System.out.println(i + " IS A PRIME NUMBER!");
-                    primeNumberFound++;
-                }
-            }
-        }
-        if (primeNumberFound == 3) {
-            System.out.println("FOUND 3 PRIME NUMBERS - TERMINATING THE PROGRAM!");
-        }else System.exit(0);
-
+        determineNumberOfPrimeInRange(6,20,60);
     }
 }
